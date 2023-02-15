@@ -11,8 +11,9 @@ class MovieDetailsScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(),
-        body: Container(
+        body: Padding(
             padding: const EdgeInsets.all(30),
+            // Movie details data
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
