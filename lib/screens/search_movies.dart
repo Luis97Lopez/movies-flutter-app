@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import '../models/movie.dart';
+import '../services/movie.dart';
 
-class MoviesScreen extends StatefulWidget {
-  const MoviesScreen({super.key});
-
-  // TODO: Search History list variable
+class SearchMoviesScreen extends StatefulWidget {
+  const SearchMoviesScreen({super.key});
 
   @override
-  State<MoviesScreen> createState() => _MoviesScreen();
+  State<SearchMoviesScreen> createState() => _SearchMoviesScreen();
 }
 
-class _MoviesScreen extends State<MoviesScreen> {
+class _SearchMoviesScreen extends State<SearchMoviesScreen> {
+  List<Movie> searchHistory = [];
+  TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +21,15 @@ class _MoviesScreen extends State<MoviesScreen> {
             child: Column(children: [
               Expanded(
                   flex: 2,
-                  child: Column(children: const [
-                    Text('MOVIES DETAIL APP'),
-                    Text(
+                  child: Column(children: [
+                    const Text('MOVIES DETAIL APP'),
+                    const Text(
                         'Place the name of the movie you want to know its details here'),
-                    TextField(),
+                    TextField(
+                      controller: searchController,
+                    ),
                   ])),
+              // TODO: List cache movies
               Expanded(flex: 4, child: Container()),
               Expanded(
                   flex: 1,
@@ -34,7 +40,11 @@ class _MoviesScreen extends State<MoviesScreen> {
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  print('searching...');
+                                  searchMovie(searchController.text)
+                                      .then((result) {
+                                    Navigator.pushNamed(context, '/movie',
+                                        arguments: result);
+                                  });
                                 },
                                 child: const Text('Search movie'),
                               )))))
