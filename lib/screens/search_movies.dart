@@ -28,13 +28,17 @@ class _SearchMoviesScreen extends State<SearchMoviesScreen> {
             padding: const EdgeInsets.fromLTRB(15, 50, 10, 15),
             child: Column(children: [
               // Title
-              const Text('MOVIES DETAIL APP'),
+              const Text(
+                'MOVIES DETAIL APP',
+                style: TextStyle(fontSize: 30),
+              ),
               const Text(
                   'Place the name of the movie you want to know its details here'),
               // Text Input
               TextField(
-                controller: searchController,
-              ),
+                  controller: searchController,
+                  decoration:
+                      const InputDecoration(prefixIcon: Icon(Icons.search))),
               // Subtitle
               Container(
                   padding: const EdgeInsets.symmetric(vertical: 5),

@@ -22,9 +22,14 @@ class MovieElement extends StatelessWidget {
                 child: Row(children: [
                   PosterImage(poster: movie.poster),
                   Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Text('${movie.title} (${movie.year})'),
-                  )
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('${movie.title} (${movie.year})'),
+                            const Text('See details →')
+                          ]))
                 ]))));
   }
 }

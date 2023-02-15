@@ -21,7 +21,20 @@ class MovieDetailsScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   PosterImage(poster: movie.poster, width: 220, height: 340),
                   const SizedBox(height: 20),
-                  Flexible(child: Text(movie.plot))
+                  const Text('Release Date',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(movie.realesed),
+                  const SizedBox(height: 20),
+                  const Text('Rotten Tomatoes Rating',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(movie.rottenRating),
+                  const SizedBox(height: 20),
+                  const Text('Movie Plot',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Expanded(
+                      child: Text(
+                    movie.plot,
+                  )),
                 ])));
   }
 }
