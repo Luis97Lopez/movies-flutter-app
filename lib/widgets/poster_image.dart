@@ -11,9 +11,7 @@ class PosterImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return poster != "N/A"
         ? Image.network(poster, width: width, height: height)
-        : Image(
-            image: const AssetImage('assets/images/not_available.png'),
-            width: width,
-            height: height);
+        : Image.asset('assets/images/not_available.png',
+            width: width, height: height);
   }
 }

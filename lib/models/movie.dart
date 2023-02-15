@@ -30,7 +30,7 @@ class Movie {
         year: json['Year'],
         poster: poster,
         plot: json['Plot'],
-        rottenRating: rottenInfo.first["Value"],
+        rottenRating: rottenInfo.isEmpty ? "N/A" : rottenInfo.first["Value"],
         realesed: json['Released']);
   }
 }

@@ -17,7 +17,8 @@ class MovieDetailsScreen extends StatelessWidget {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('${movie.title} (${movie.year})'),
+                  Text('${movie.title} (${movie.year})',
+                      style: const TextStyle(fontSize: 30)),
                   const SizedBox(height: 20),
                   PosterImage(poster: movie.poster, width: 220, height: 340),
                   const SizedBox(height: 20),
