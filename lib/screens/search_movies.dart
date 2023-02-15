@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../models/movie.dart';
 import '../services/movie.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SearchMoviesScreen extends StatefulWidget {
   const SearchMoviesScreen({super.key});
@@ -41,9 +44,29 @@ class _SearchMoviesScreen extends State<SearchMoviesScreen> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   searchMovie(searchController.text)
-                                      .then((result) {
+                                      .then((movie) {
                                     Navigator.pushNamed(context, '/movie',
-                                        arguments: result);
+                                        arguments: movie);
+                                    searchHistory.add(movie);
+                                  }).onError((error, stackTrace) {
+                                    if (error is FormatException) {
+                                      Fluttertoast.showToast(
+                                          msg: error.message,
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.TOP,
+                                          backgroundColor: Colors.amber,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    }
+                                    if (error is HttpException) {
+                                      Fluttertoast.showToast(
+                                          msg: error.toString(),
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.TOP,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    }
                                   });
                                 },
                                 child: const Text('Search movie'),
