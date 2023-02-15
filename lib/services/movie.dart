@@ -8,7 +8,7 @@ Future<Movie> searchMovie(text) async {
   var url = 'http://www.omdbapi.com/?apikey=$key&t=$text';
 
   if (text == '') {
-    throw const FormatException('Add a movie title.');
+    throw const FormatException('Add a movie title');
   }
   try {
     return http.get(Uri.parse(url)).then((response) async {

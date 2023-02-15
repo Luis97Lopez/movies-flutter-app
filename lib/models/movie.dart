@@ -3,14 +3,12 @@ class Movie {
   String year;
   String poster;
   String plot;
-  bool isEmpty;
 
   Movie(
       {required this.title,
       required this.year,
       required this.poster,
-      required this.plot,
-      this.isEmpty = false});
+      required this.plot});
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     String poster = "N/A";
@@ -24,9 +22,5 @@ class Movie {
         year: json['Year'],
         poster: poster,
         plot: json['Plot']);
-  }
-
-  factory Movie.getEmpty() {
-    return Movie(plot: '', title: '', poster: '', year: '', isEmpty: true);
   }
 }
