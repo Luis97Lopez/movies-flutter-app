@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/movie.dart';
 import '../widgets/list.dart';
+import '../widgets/clean_history.dart';
 import '../widgets/search_button.dart';
 
 class SearchMoviesScreen extends StatefulWidget {
@@ -14,11 +15,19 @@ class _SearchMoviesScreen extends State<SearchMoviesScreen> {
   Map<String, Movie> searchHistory = {};
   TextEditingController searchController = TextEditingController();
 
+  void refresh() {
+    setState(() => {});
+  }
+
   void _addInSearchHistory(movie) {
-    setState(() {
-      searchHistory.remove(movie.title);
-      searchHistory[movie.title] = movie;
-    });
+    searchHistory.remove(movie.title);
+    searchHistory[movie.title] = movie;
+    refresh();
+  }
+
+  void _cleanSearchHistory() {
+    searchHistory.clear();
+    refresh();
   }
 
   @override
@@ -43,6 +52,8 @@ class _SearchMoviesScreen extends State<SearchMoviesScreen> {
               Container(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: const Text('Search History')),
+              // Clean History Button
+              CleanHistoryButton(function: _cleanSearchHistory),
               // Movies list
               Flexible(
                   child: MoviesList(
