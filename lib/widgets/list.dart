@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/movie.dart';
 import '../widgets/list_element.dart';
 
+// TODO: change to stateful
 class MoviesList extends StatelessWidget {
   final Map<String, Movie> searchHistory;
   final Function addMovieInSearchHistory;

@@ -19,3 +19,4 @@ class MoviesApp extends StatelessWidget {
     );
   }
 }
+// packages state management: provider or bloc
